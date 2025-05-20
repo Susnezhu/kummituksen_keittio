@@ -1,93 +1,84 @@
-* {
-    margin: 0px;
-    padding: 0px;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-}
-
 #canvas {
     display: block;
 }
 
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
 
- body {
-        background-color: black;
-        margin: 0;
-        padding: 0;
-        color: white;
-    }
+/* Grid kontaineri. hallitsee sivun asettelun */
+.screen {
+    display: grid;
+    grid-template-areas: 
+        "ingredients mixer recipes"
+        "ingredients mixer recipes"
+        "ingredients mixer money";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 0.7fr;
+    height: 100vh;
+    gap: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
-    /* Grid kontaineri. hallitsee sivun asettelun */
-    .screen {
-        display: grid;
-        grid-template-areas: 
-            "ingredients mixer recipes"
-            "ingredients mixer recipes"
-            "ingredients mixer money";
-        grid-template-columns: 1fr 2fr 1fr;
-        grid-template-rows: 1fr 1fr 0.7fr;
-        height: 100vh;
-        gap: 10px;
-        padding: 20px;
-        box-sizing: border-box;
-    }
+/* kaikkien laatikoiden tyyli */
+.box {
+    background-color: #2b2b2b;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
 
-    /* kaikkien laatikoiden tyyli */
-    .box {
-        background-color: #2b2b2b;
-        border-radius: 20px;
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        position: relative;
-    }
+/* kertoo mihin grid-alueeseen eri osiot tulee */
+.ingredients    { grid-area: ingredients; }
+.mix            { grid-area: mixer;}
+.recipe         { grid-area: recipes; }
+.money          { grid-area: money; }
 
-    /* kertoo mihin grid-alueeseen eri osiot tulee */
-    .ingredients    { grid-area: ingredients; }
-    .mix            { grid-area: mixer;}
-    .recipe         { grid-area: recipes; }
-    .money          { grid-area: money; }
+/* Ihan vaan ympyrä, voi poistaa myöhemmin ja vaihtaa aineksien kuviin*/
+.circle {
+    width: 100px;
+    height: 100px;
+    background-color: #444;
+    border-radius: 50%;
+    margin: 10px;
+}
 
-    /* Ihan vaan ympyrä, voi poistaa myöhemmin ja vaihtaa aineksien kuviin*/
-    .circle {
-        width: 100px;
-        height: 100px;
-        background-color: #444;
-        border-radius: 50%;
-        margin: 10px;
-    }
+/* Ihan vaan suorakulmio, voi myös poistaa myöhemmin ja vaihtaa aineksien kuviin */
+.square {
+    width: 150px;
+    height: 150px;
+    background-color: #444;
+    margin: 10px;
+}
 
-    /* Ihan vaan suorakulmio, voi myös poistaa myöhemmin ja vaihtaa aineksien kuviin */
-    .square {
-        width: 150px;
-        height: 150px;
-        background-color: #444;
-        margin: 10px;
-    }
+h2 {
+    margin-top: 0;
+}
 
-    h2 {
-        margin-top: 0;
-    }
+/* tämä, jotta näppäimet olisivat aineksien vieressä */
+.ingredient_item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
-    /* tämä, jotta näppäimet olisivat aineksien vieressä */
-    .ingredient_item {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    /* reseptikirjan näppäimet */
-    .scroll_btn {
-        position: absolute;
-        bottom: 30px;
-    }
-    .scroll_btn.left {
-    left: 20px;
-    }
-    .scroll_btn.right {
-    right: 20px;
-    }
+/* reseptikirjan näppäimet */
+.scroll_btn {
+    position: absolute;
+    bottom: 30px;
+}
+.scroll_btn.left {
+left: 20px;
+}
+.scroll_btn.right {
+right: 20px;
+}
