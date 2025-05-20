@@ -11,6 +11,69 @@
     <canvas id="canvas"></canvas>
     
 
+    <!-- Peliruutu -->
+    <div class="screen">
+
+        <!-- Ainekset laatikko -->
+        <div class="box ingredients">
+            <div>
+                <h2>Ainekset</h2>
+                <div class="ingredients_list"> <!-- Lista kaikista aineksista. Myöhemmin tulee lisää -->
+                    <div class="ingredient_item"> <!-- Yksi aines, jossa on näppäimet osta ja lisää -->
+                        <div class="circle"></div> <!-- Tähän tulee aineksen kuva myöhemmin-->
+                        <div class="ingredient_buttons">
+                            <button class="buy">Osta</button>
+                            <button class="add">Lisää</button>
+                        </div>
+                    </div>
+
+                    <div class="ingredient_item">
+                        <div class="circle"></div>
+                        <div class="ingredient_buttons">
+                            <button class="buy">Osta</button>
+                            <button class="add">Lisää</button>
+                        </div>
+                    </div>
+
+                    <div class="ingredient_item">
+                        <div class="circle"></div>
+                        <div class="ingredient_buttons">
+                            <button class="buy">Osta</button>
+                            <button class="add">Lisää</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Aineksien sekoitus laatikko -->
+        <div class="box mix">
+            <h2>Sekoitusalue</h2>
+            <div class="square"></div>
+            <button>Sekoita</button>
+        </div>
+
+        <!-- Reseptikirja laatikko -->
+        <div class="box recipe">
+            <h2>Reseptikirja</h2>
+            <p>[aines1, aines2, aines3]</p>
+            <div>
+                <button class="scroll_btn left">vasemmalle</button>
+                <button class="scroll_btn right">oikealle</button>
+            </div>
+        </div>
+
+        <!-- Raha laatikko -->
+        <div class="box money">
+            <h2>Rahat</h2>
+            <p>50€</p>
+        </div>
+
+    </div>
+    
+
     <script src="script.js"></script>
 </body>
 </html>
