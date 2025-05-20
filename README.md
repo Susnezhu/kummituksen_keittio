@@ -1,0 +1,1 @@
+Kummituksen ravintola. Pelissä pitää sekoittaa ainekset keskenään, jotta tulisi annos. Apuna on resepti kirja. Pysty avaamaan uudet reseptit, kun kokeilee sekoittaa eri ainekset keskenään. Aineksien sekoituksen jälkeen tehty annos myydään. Ainekset pitää ostaa, jos ne loppuvat. Pelin idea löytää kaikki reseptit ja ostaa ainekset.
