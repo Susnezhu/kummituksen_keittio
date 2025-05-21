@@ -18,31 +18,90 @@
         <div class="box ingredients">
             <div>
                 <h2>Ainekset</h2>
-                <div class="ingredients_list"> <!-- Lista kaikista aineksista. Myöhemmin tulee lisää -->
+                <div class="ingredients_list"> <!-- Lista kaikista aineksista -->
                     <div class="ingredient_item"> <!-- Yksi aines, jossa on näppäimet osta ja lisää -->
-                        <div class="circle"></div> <!-- Tähän tulee aineksen kuva myöhemmin-->
+                        <div class="ingredient_pic">
+                            <div class="circle" title="Oranssi Hämäkäkin seitti"></div> <!-- Tähän tulee aineksen kuva myöhemmin-->
+                            <p id="ingredient_quantity_1">0 kpl</p>
+                        </div>
+                        
                         <div class="ingredient_buttons">
-                            <button class="buy">Osta</button>
-                            <button class="add">Lisää</button>
+                            <button class="buy" onclick="buyIngredient(1)">Osta</button>
+                            <button class="add" onclick="addIngredient(1)">Lisää</button>
                         </div>
                     </div>
 
                     <div class="ingredient_item">
-                        <div class="circle"></div>
+                        <div class="ingredient_pic">
+                            <div class="circle" title="Kovakuoriaisen jalka"></div>
+                            <p id="ingredient_quantity_2">0 kpl</p>
+                        </div>
+
                         <div class="ingredient_buttons">
-                            <button class="buy">Osta</button>
-                            <button class="add">Lisää</button>
+                            <button class="buy" onclick="buyIngredient(2)">Osta</button>
+                            <button class="add" onclick="addIngredient(2)">Lisää</button>
                         </div>
                     </div>
 
                     <div class="ingredient_item">
-                        <div class="circle"></div>
+                        <div class="ingredient_pic">
+                            <div class="circle" title="Paisunut mustesieni"></div>
+                            <p id="ingredient_quantity_3">0 kpl</p>
+                        </div>
+
                         <div class="ingredient_buttons">
-                            <button class="buy">Osta</button>
-                            <button class="add">Lisää</button>
+                            <button class="buy" onclick="buyIngredient(3)">Osta</button>
+                            <button class="add" onclick="addIngredient(3)">Lisää</button>
                         </div>
                     </div>
 
+                    <div class="ingredient_item">
+                        <div class="ingredient_pic">
+                            <div class="circle" title="Harmaa meduusa"></div>
+                            <p id="ingredient_quantity_4">0 kpl</p>
+                        </div>
+
+                        <div class="ingredient_buttons">
+                            <button class="buy" onclick="buyIngredient(4)">Osta</button>
+                            <button class="add" onclick="addIngredient(4)">Lisää</button>
+                        </div>
+                    </div>
+
+                    <div class="ingredient_item">
+                        <div class="ingredient_pic">
+                            <div class="circle" title="Anacondan muna"></div>
+                            <p id="ingredient_quantity_5">0 kpl</p>
+                        </div>
+
+                        <div class="ingredient_buttons">
+                            <button class="buy" onclick="buyIngredient(5)">Osta</button>
+                            <button class="add" onclick="addIngredient(5)">Lisää</button>
+                        </div>
+                    </div>
+
+                    <div class="ingredient_item">
+                        <div class="ingredient_pic">
+                            <div class="circle" title="Auringonkukka"></div>
+                            <p id="ingredient_quantity_6">0 kpl</p>
+                        </div>
+
+                        <div class="ingredient_buttons">
+                            <button class="buy" onclick="buyIngredient(6)">Osta</button>
+                            <button class="add" onclick="addIngredient(6)">Lisää</button>
+                        </div>
+                    </div>
+
+                    <div class="ingredient_item">
+                        <div class="ingredient_pic">
+                            <div class="circle" title="Tuikkiva jauho"></div>
+                            <p id="ingredient_quantity_7">0 kpl</p>
+                        </div>
+
+                        <div class="ingredient_buttons">
+                            <button class="buy" onclick="buyIngredient(7)">Osta</button>
+                            <button class="add" onclick="addIngredient(7)">Lisää</button>
+                        </div>
+                    </div>
 
                 </div>
             </div>
