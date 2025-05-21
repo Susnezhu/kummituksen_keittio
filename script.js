@@ -5,15 +5,14 @@ if (canvas.getContext){
     console.log("testi");
     const ctx = canvas.getContext("2d");
 
-    function canvasSize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    function functionMix(){
 
-        ctx.fillStyle = "rgb(136, 146, 151)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, 100, 100);
+        ctx.closePath();
     }
-
-    window.addEventListener("resize", canvasSize);
-
-    canvasSize();
 }
