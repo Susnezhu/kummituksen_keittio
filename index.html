@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <canvas id="canvas"></canvas>
+    
+    <div class="canvasDiv">
+        <canvas id="canvas"></canvas>
+        <button id="minipeli_button">Pysäytä</button> <!--alt. paina spacebaria, buttonin sijaan esim p tagi missä selostus-->
+    </div>
     
 
     <!-- Peliruutu -->
-    <div class="screen">
+    <div id="html_layout" class="screen">
 
         <!-- Ainekset laatikko -->
         <div class="box ingredients">
@@ -111,7 +114,7 @@
         <div class="box mix">
             <h2>Sekoitusalue</h2>
             <div class="square"></div>
-            <button onclick="functionMix()">Sekoita</button> <!--painike saa minipelin esille?-->
+            <button onclick="startTheMiniGame()">Sekoita</button> <!--painike saa minipelin esille?-->
         </div>
 
         <!-- Reseptikirja laatikko -->
@@ -134,5 +137,7 @@
     
 
     <script src="script.js"></script>
+
+    <script src="script2.js"></script> <!--script2.js lisäys-->
 </body>
 </html>

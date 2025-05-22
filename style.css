@@ -5,6 +5,8 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    pointer-events: none; /*Uusi lisäys 22.5.2025*/
+    z-index: 100; /*Uusi lisäys 22.5.2025*/
 }
 
 body {
@@ -12,6 +14,7 @@ body {
     margin: 0;
     padding: 0;
     color: white;
+    overflow: hidden; /* Uusi lisäys 22.5.2025 */
 }
 
 /* Grid kontaineri. hallitsee sivun asettelun */
@@ -103,5 +106,20 @@ left: 20px;
 }
 .scroll_btn.right {
 right: 20px;
+}
+
+.html_layoyt { /*Uusi lisäys 22.5.2025*/
+    display: block; 
+}
+
+#minipeli_button { /*Uusi lisäys 22.5.2025*/
+    padding: 22px;
+    border-radius: 20px;
+    bottom: 13%;
+    width: 150px;
+    left: 45.5%;
+    align-items: center;
+    display: none;
+    position: absolute;
 }
 
