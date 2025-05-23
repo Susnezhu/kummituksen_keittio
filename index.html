@@ -120,10 +120,12 @@
         <!-- Reseptikirja laatikko -->
         <div class="box recipe">
             <h2>Reseptikirja</h2>
-            <p>[aines1, aines2, aines3]</p>
+            <p id="recipe_name_text">Reseptin nimi</p>
+            <p id="recipe_text">[aines1, aines2, aines3]</p>
+            <p id="recipe_cost_text">hinta: 10€</p>
             <div>
-                <button class="scroll_btn left">vasemmalle</button>
-                <button class="scroll_btn right">oikealle</button>
+                <button onclick="changeRecipe('minus')" class="scroll_btn left">vasemmalle</button>
+                <button onclick="changeRecipe('plus')" class="scroll_btn right">oikealle</button>
             </div>
         </div>
 

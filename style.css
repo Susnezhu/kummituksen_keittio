@@ -108,6 +108,12 @@ left: 20px;
 right: 20px;
 }
 
+/* reseptin nimi vähän isommaksi */
+#recipe_name_text {
+    font-size: 20px;
+    margin-top: 50px;
+}
+
 .html_layoyt { /*Uusi lisäys 22.5.2025*/
     display: block; 
 }

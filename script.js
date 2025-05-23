@@ -1,13 +1,13 @@
 
-//ainekset: sen määrä, numero, hinta
+//ainekset: sen määrä, numero, hinta, nimi
 const ingredients = {
-    1: [0,1,1],
-    2: [0,2,1],
-    3: [0,3,1],
-    4: [0,1,1],
-    5: [0,1,1],
-    6: [0,1,1],
-    7: [0,1,1]};
+    1: [0,1,1, "Oranssi Hämäkäkin seitti"],
+    2: [0,2,1, "Kovakuoriaisen jalka"],
+    3: [0,3,1, "Paisunut mustesieni"],
+    4: [0,1,1, "Harmaa meduusa"],
+    5: [0,1,1, "Anacondan muna"],
+    6: [0,1,1, "Auringonkukka"],
+    7: [0,1,1, "Tuikkiva jauho"]};
 
 //pelaajan rahat
 let money = 50;
@@ -16,13 +16,16 @@ let money = 50;
 let mixingBowl = [];
 
 //oikeat kombinaatiot resepteille
-const rightCombination = {
-    settiverho: [1,2],
-    hamahakinAurin: [1,6,7],
-    meduusanSydan: [3,4,5,7],
-    elavaHyytelo: [2,4,5,7],
-    KuunPalanen: [2,4,7]
-}
+const rightCombination = [
+    {name: "Settiverho", combo: [1,2], price: 5, locked: false},
+    {name: "Hämähäkin auringonsäde", combo: [1, 6, 7], price: 6, locked: true},
+    {name: "Meduusan sydän", combo: [3, 4, 7, 5], price: 10, locked: true},
+    {name: "Elävä hyytelö", combo: [2, 4, 5, 7], price: 12, locked: true},
+    {name: "Kuun palanen", combo: [2, 4 ,7],price: 7, locked: true}
+];
+
+//mikä resepti nyt auki
+let recipeNow = 0
 
 //funktio saa aineksen arvon ja ostaa sen
 function buyIngredient(num) {
@@ -47,7 +50,7 @@ function addIngredient(num) {
     if (ingredients[num][0] > 0 && mixingBowl.length < 10) {
 
         //aineksien vähemtäminen
-        let quantityText = document.getElementById("ingredient_quantity_" + num)
+        let quantityText = document.getElementById("ingredient_quantity_" + num);
         ingredients[num][0] -= 1;
         let quantity = ingredients[num][0];
         quantityText.textContent = quantity + " kpl";
@@ -56,3 +59,46 @@ function addIngredient(num) {
         mixingBowl.push(ingredients[num][1]);
     }
 }
+
+
+//resepti kirjan näppäimillä selailu
+function changeRecipe(value) {
+
+    if (value === "minus") {
+        if (recipeNow <= 0) {
+            recipeNow = 4;
+        } else {
+            recipeNow -= 1;}
+    } else if (value === "plus") {
+        if (recipeNow >= 4) {
+            recipeNow = 0;
+        } else {
+            recipeNow += 1
+        }
+    }
+
+    showRecipe()
+}
+
+//näyttää reseptin näytöllä
+function showRecipe() {
+    let recipeNameText = document.getElementById("recipe_name_text");
+    let recipeText = document.getElementById("recipe_text");
+    let recipeCostText = document.getElementById("recipe_cost_text");
+
+    recipeNameText.textContent = rightCombination[recipeNow].name; //näyttää valitun reseptin nimen
+    recipeCostText.textContent = "hinta: " + rightCombination[recipeNow].price + "€"; //näyttää valitun hinnan
+
+    let ingredientLines = [] //tähän tulee aineksien nimet
+
+    for (let now of rightCombination[recipeNow].combo) {
+
+        recipeText.textContent = ingredients[now][3];
+        ingredientLines.push("- " + ingredients[now][3]);
+    }
+
+    recipeText.innerText = ingredientLines.join("\n");
+}
+
+//Avaa aloitus reseptin, kun sivu avautuu
+showRecipe()
