@@ -28,7 +28,7 @@
                 <div class="ingredients_list"> <!-- Lista kaikista aineksista -->
                     <div class="ingredient_item"> <!-- Yksi aines, jossa on näppäimet osta ja lisää -->
                         <div class="ingredient_pic">
-                            <div class="circle" title="Oranssi Hämäkäkin seitti"></div> <!-- Tähän tulee aineksen kuva myöhemmin-->
+                            <img src="/kuvat/1.png" class="circle" title="Oranssi Hämäkäkin seitti"> <!-- Tähän tulee aineksen kuva myöhemmin-->
                             <p id="ingredient_quantity_1">0 kpl</p>
                         </div>
                         
@@ -40,7 +40,7 @@
 
                     <div class="ingredient_item">
                         <div class="ingredient_pic">
-                            <div class="circle" title="Kovakuoriaisen jalka"></div>
+                            <img src="/kuvat/2.png" class="circle" title="Kovakuoriaisen jalka">
                             <p id="ingredient_quantity_2">0 kpl</p>
                         </div>
 
@@ -52,7 +52,7 @@
 
                     <div class="ingredient_item">
                         <div class="ingredient_pic">
-                            <div class="circle" title="Paisunut mustesieni"></div>
+                            <img src="/kuvat/3.png" class="circle" title="Paisunut mustesieni">
                             <p id="ingredient_quantity_3">0 kpl</p>
                         </div>
 
@@ -64,7 +64,7 @@
 
                     <div class="ingredient_item">
                         <div class="ingredient_pic">
-                            <div class="circle" title="Harmaa meduusa"></div>
+                            <img src="/kuvat/4.png" class="circle" title="Harmaa meduusa">
                             <p id="ingredient_quantity_4">0 kpl</p>
                         </div>
 
@@ -76,7 +76,7 @@
 
                     <div class="ingredient_item">
                         <div class="ingredient_pic">
-                            <div class="circle" title="Anacondan muna"></div>
+                            <img src="/kuvat/5.png" class="circle" title="Anacondan muna">
                             <p id="ingredient_quantity_5">0 kpl</p>
                         </div>
 
@@ -88,7 +88,7 @@
 
                     <div class="ingredient_item">
                         <div class="ingredient_pic">
-                            <div class="circle" title="Auringonkukka"></div>
+                            <img src="/kuvat/6.png" class="circle" title="Auringonkukka">
                             <p id="ingredient_quantity_6">0 kpl</p>
                         </div>
 
@@ -100,7 +100,7 @@
 
                     <div class="ingredient_item">
                         <div class="ingredient_pic">
-                            <div class="circle" title="Tuikkiva jauho"></div>
+                            <img src="/kuvat/7.png" class="circle" title="Tuikkiva jauho">
                             <p id="ingredient_quantity_7">0 kpl</p>
                         </div>
 
@@ -117,7 +117,7 @@
         <!-- Aineksien sekoitus laatikko -->
         <div class="box mix">
             <h2>Sekoitusalue</h2>
-            <div class="square"></div>
+            <img src="kuvat/pot.png" class="square">
             <button onclick="startTheMiniGame()">Sekoita</button> <!--painike saa minipelin esille?-->
         </div>
 
@@ -125,6 +125,7 @@
         <div class="box recipe">
             <h2>Reseptikirja</h2>
             <p id="recipe_name_text">Reseptin nimi</p>
+            <img id="recipe_pic">
             <p id="recipe_text">[aines1, aines2, aines3]</p>
             <p id="recipe_cost_text">hinta: 10€</p>
             <div>

@@ -1,5 +1,5 @@
 
-//ainekset: sen määrä, numero, hinta, nimi
+//ainekset: sen määrä, numero, hinta, nimi, kuva
 const ingredients = {
     1: [0,1,1, "Oranssi Hämäkäkin seitti"],
     2: [0,2,1, "Kovakuoriaisen jalka"],
@@ -17,11 +17,11 @@ let mixingBowl = [];
 
 //oikeat kombinaatiot resepteille
 const rightCombination = [
-    {name: "Settiverho", combo: [1,2], price: 5, locked: false},
-    {name: "Hämähäkin auringonsäde", combo: [1, 6, 7], price: 6, locked: true},
-    {name: "Meduusan sydän", combo: [3, 4, 7, 5], price: 10, locked: true},
-    {name: "Elävä hyytelö", combo: [2, 4, 5, 7], price: 12, locked: true},
-    {name: "Kuun palanen", combo: [2, 4 ,7],price: 7, locked: true}
+    {name: "Settiverho", combo: [1,2], price: 5, locked: false, pic: "kuvat/r1.png"},
+    {name: "Hämähäkin auringonsäde", combo: [1, 6, 7], price: 6, locked: true, pic: "kuvat/r2.png"},
+    {name: "Meduusan sydän", combo: [3, 4, 7, 5], price: 10, locked: true, pic: "kuvat/r3.png"},
+    {name: "Elävä hyytelö", combo: [2, 4, 5, 7], price: 12, locked: true, pic: "kuvat/r4.png"},
+    {name: "Kuun palanen", combo: [2, 4 ,7],price: 7, locked: true, pic: "kuvat/r5.png"}
 ];
 
 //mikä resepti nyt auki
@@ -85,9 +85,11 @@ function showRecipe() {
     let recipeNameText = document.getElementById("recipe_name_text");
     let recipeText = document.getElementById("recipe_text");
     let recipeCostText = document.getElementById("recipe_cost_text");
+    let recipePic = document.getElementById("recipe_pic");
 
     recipeNameText.textContent = rightCombination[recipeNow].name; //näyttää valitun reseptin nimen
     recipeCostText.textContent = "hinta: " + rightCombination[recipeNow].price + "€"; //näyttää valitun hinnan
+    recipePic.src = rightCombination[recipeNow].pic; //näytttää reseptin kuvan
 
     let ingredientLines = [] //tähän tulee aineksien nimet
 
