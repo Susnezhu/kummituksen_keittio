@@ -28,6 +28,7 @@ if (canvas.getContext){
     let direction = -1;
     let gameActive = true;
     let tries = 0;
+    let tries2 = 3;
     const maxTries = 3;
     const greenZone = {
     y: meterY - 140, height: 90
@@ -63,8 +64,6 @@ if (canvas.getContext){
         if (!gameActive) return;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        //Alunperin paikka missä const centerSpotX, lisää tänne takaisin jos ei pysty olemaan globaalissa
 
         //draw white area
         ctx.beginPath();
@@ -102,24 +101,70 @@ if (canvas.getContext){
         
         tries++;
         
-        if (needleY >= greenZone.y && needleY <= greenZone.y + greenZone.height){
-            alert(`success! You hit the green!`);
-            gameActive = false;
-            
-            html_layout.style.display = 'grid';
-            canvas.style.display = 'none';
-            minipeli_button.style.display = "none";
-        } else {
-            speed -= 2;
-            alert(`missed! Tries left: ${maxTries - tries}`);
-            if (tries >= maxTries){
-                alert(`all tries used, failed to mix.`);
-                gameActive = false;
+        if (needleY >= greenZone.y && needleY <= greenZone.y + greenZone.height) {
 
+            document.getElementById("yritysmaara").textContent = "";
+            minipeli_button.style.display = "none";
+
+            sekoitus_teksti.style.display = "block";
+            yritysmaara.style.display = "none";
+            
+            let greenMessage = document.getElementById("sekoitus_teksti");
+            greenMessage.style.color = "rgb(110, 255, 141)";
+            greenMessage.style.fontSize = "35px";
+            greenMessage.textContent = "Onnittelut, osuit vihreään!";
+
+            gameActive = false;
+            setTimeout(function() {
+                
                 html_layout.style.display = 'grid';
                 canvas.style.display = 'none';
                 minipeli_button.style.display = "none";
+                sekoitus_teksti.style.display = "none";
+                yritysmaara.style.display = "none";
+            }, 3000);
+            
+            tries2 = 3;
+            document.getElementById("yritysmaara").textContent = `${tries2} yritystä jäljellä.`;
+        } 
+        else {
+            speed -= 2;
+            
+            let yritykset = document.getElementById("sekoitus_teksti");
+            yritykset.style.fontSize = "30px";
+            yritykset.style.color = "rgb(222, 80, 80)";
+            yritykset.textContent = "Ohi meni!"
+            document.getElementById("yritysmaara").style.color = "rgb(222, 80, 80)";
+            document.getElementById("yritysmaara").style.fontSize = "30px";
+            document.getElementById("yritysmaara").textContent = `${tries2 - 1} yritystä jäljellä.`;
 
+            sekoitus_teksti.style.display = "block";
+            yritysmaara.style.display = "block";
+            tries2 -= 1;
+
+            if (tries >= maxTries){
+
+                minipeli_button.style.display = "none";
+
+                let yritykset = document.getElementById("sekoitus_teksti");
+                document.getElementById("yritysmaara").textContent = "";
+                yritykset.style.color =  "rgb(222, 80, 80)";
+                yritykset.style.fontSize = "30px";
+                yritykset.textContent = "Yritykset loppuivat, miksaus epäonnistui!"
+                
+                gameActive = false;
+                setTimeout(function() {
+                    
+                    html_layout.style.display = 'grid';
+                    canvas.style.display = 'none';
+                    sekoitus_teksti.style.display = "none";
+                    yritysMaara = document.getElementById("yritysmaara");
+                    yritysMaara.textContent = `${tries2} yritystä jäljellä.`;
+                    yritysmaara.style.display = "none";
+
+                    tries2 = 3;
+            }, 3000);
+                
             }
         }
     }

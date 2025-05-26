@@ -129,3 +129,23 @@ right: 20px;
     position: absolute;
 }
 
+#sekoitus_teksti{
+    display: none;
+    bottom: 9%;
+    width: 300px;
+    left: 42%;
+    align-items: center;
+    display: none;
+    position: absolute;
+}
+
+#yritysmaara {
+    display: none;
+    bottom: 4.5%;
+    width: 300px;
+    left: 42%;
+    align-items: center;
+    display: none;
+    position: absolute;
+}
+
