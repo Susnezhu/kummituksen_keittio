@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kummituksen keittiö</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
 </head>
 <body>
     
@@ -117,6 +118,7 @@
         <!-- Aineksien sekoitus laatikko -->
         <div class="box mix">
             <h2>Sekoitusalue</h2>
+            <div id="choosed_ingredients"></div> <!-- tähän myöhemmin tulee kuvia aineksista, kun niitä lisää kattilaan-->
             <img src="kuvat/pot.png" class="square">
             <button onclick="startTheMiniGame()">Sekoita</button> <!--painike saa minipelin esille?-->
         </div>
@@ -129,15 +131,21 @@
             <p id="recipe_text">[aines1, aines2, aines3]</p>
             <p id="recipe_cost_text">hinta: 10€</p>
             <div>
-                <button onclick="changeRecipe('minus')" class="scroll_btn left">vasemmalle</button>
-                <button onclick="changeRecipe('plus')" class="scroll_btn right">oikealle</button>
+                <button onclick="changeRecipe('minus')" class="scroll_btn left">
+                    <img src="kuvat/left.png" alt="">
+                </button>
+                <button onclick="changeRecipe('plus')" class="scroll_btn right">
+                    <img src="kuvat/right.png" alt="">
+                </button>
             </div>
         </div>
 
         <!-- Raha laatikko -->
         <div class="box money">
-            <h2>Rahat</h2>
-            <p id="money_text">50€</p>
+            <div class="money_position">
+                <h2>Rahat</h2>
+                <p id="money_text">50€</p>
+            </div>
         </div>
 
     </div>

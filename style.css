@@ -13,8 +13,30 @@ body {
     background-color: black;
     margin: 0;
     padding: 0;
-    color: white;
+    color: rgb(255, 255, 255);
     overflow: hidden; /* Uusi lisäys 22.5.2025 */
+    font-family: "Caveat", cursive;
+}
+
+/* kaikkien tekstien koko */
+h2 {font-size: 40px; margin: 10px;}
+p {font-size: 20px;}
+
+/* kaikki näppäimet */
+button {
+    font-family: "Caveat", cursive;
+    background-color: #d49b3f;
+    z-index: 101;
+    position: relative; 
+    border-radius: 10px;
+    border: 3px solid #281d0a;
+}
+button:hover {
+    background-color: #aa7d34;
+    cursor: pointer;
+}
+button:active {
+    transform: scale(1.2); /* painaessa näppäin on vähän isompi */
 }
 
 /* Grid kontaineri. hallitsee sivun asettelun */
@@ -46,11 +68,11 @@ body {
     position: relative;
 }
 
-/* kertoo mihin grid-alueeseen eri osiot tulee */
-.ingredients    { grid-area: ingredients; }
-.mix            { grid-area: mixer; }
-.recipe         { grid-area: recipes; }
-.money          { grid-area: money; }
+/* kertoo mihin grid-alueeseen eri osiot tulee ja laittaa niille taustat */
+.ingredients    { grid-area: ingredients; background-image: url("kuvat/bgIng.png"); background-size: cover;}
+.mix            { grid-area: mixer; background-image: url("kuvat/bgmix.png"); background-size: cover;}
+.recipe         { grid-area: recipes; background-image: url("kuvat/bgbook.png"); background-size: cover;}
+.money          { grid-area: money; background-image: url("kuvat/bgmoney.png"); background-size: cover;}
 
 /* ympyrä jossa aineksien kuvat */
 .circle {
@@ -58,13 +80,16 @@ body {
     height: 100px;
     border-radius: 50%;
     margin: 0px;
+    padding: 10px;
+    background-color: #f7c741c3;
 }
 
 /* neliö, jossa kattilan kuva */
 .square {
     width: 300px;
     height: 300px;
-    margin: 10p
+    margin: 10p;
+    margin-top: 250px;
 }
 
 h2 {
@@ -79,6 +104,14 @@ h2 {
     align-items: center;
 }
 
+/* aineksien näppäimet */
+.ingredient_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: -25px;
+}
+
 /* vieritys mahdollisuus ylös ja alas */
 .ingredients_list {
     overflow-y: scroll;
@@ -89,6 +122,7 @@ h2 {
 /* aineksen kuva ja määrä kpl*/
 .ingredient_pic {
     margin: 15px;
+    
 }
 .ingredient_pic p {
     margin: 5px;
@@ -97,19 +131,28 @@ h2 {
 /* reseptikirjan näppäimet */
 .scroll_btn {
     position: absolute;
-    bottom: 30px;
+    bottom: 45px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.scroll_btn:hover {
+    background-color: inherit; /* ei vaihda taustaa */
+    filter: brightness(80%);
+}
+.scroll_btn img {
+    width: 50px;
 }
 .scroll_btn.left {
-left: 20px;
+left: 35px;
 }
 .scroll_btn.right {
-right: 20px;
+right: 25px;
 }
 
 /* reseptin nimi vähän isommaksi */
 #recipe_name_text {
-    font-size: 20px;
-    margin-top: 50px;
+    font-size: 25px;
 }
 
 /* reseptin kuva */
@@ -152,3 +195,22 @@ right: 20px;
     position: absolute;
 }
 
+
+/* näppäimien koko aineksien laatikossa */
+.ingredients button {
+    width: 100px;
+    font-size: 25px;
+    border: 3px solid #281d0a;
+}
+
+/* näppäimen koko sekoitusalueella */
+.mix button {
+    width: 150px;
+    font-size: 35px;
+}
+
+.money_position {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+}
