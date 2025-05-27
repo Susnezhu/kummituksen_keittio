@@ -126,9 +126,11 @@ if (canvas.getContext){
             
             tries2 = 3;
             document.getElementById("yritysmaara").textContent = `${tries2} yritystä jäljellä.`;
+            reviewRecipe(); //kutsutaan funktio mikä on toisessa JS tiedostossa
         } 
         else {
             speed -= 2;
+            new Audio("sounds/lose.mp3").play();
             
             let yritykset = document.getElementById("sekoitus_teksti");
             yritykset.style.fontSize = "30px";
@@ -145,6 +147,7 @@ if (canvas.getContext){
             if (tries >= maxTries){
 
                 minipeli_button.style.display = "none";
+                new Audio("sounds/gameover.mp3").play();
 
                 let yritykset = document.getElementById("sekoitus_teksti");
                 document.getElementById("yritysmaara").textContent = "";
