@@ -19,6 +19,27 @@
         </p>
     </div>
     
+    <div id="help_window_big">
+        <img src="kuvat/help_button2.png" class="help_kuva" title="help ohje ikkuna">
+        <p class="help_teksti">Ainekset: Täältä ainekset, mitä tarvitset sekoitukseen. Kaikki ainekset
+            eivät heti saatavilla, niitä tulee sen mukaan miten paljon rahaa olet ansainnut.
+            <br>
+            . Osta: "Osta"-napilla ostat ja saat aineksen käyttöösi.
+            <br>
+            . Lisää: "Lisää"-napilla lisäät aineksen sekoitusalueelle, eli kattilaan (max 10 kpl.)
+            <br>
+            Sekoitusalue: Kattila, mihin sinun tulee lisätä ainesosat.
+            <br>
+            . Minipeli: Ruudulle tulee minipeli kun painat "sekoita"-nappia.
+            Tässä sinun pitää pysäyttää mittarinuoli vihreälle, välilyönti- tai Pysäytä-nappila.
+            <br>
+            Reseptikirja: Tuotteita mitä voit luoda, niiden hinta ja ohjeet.
+            <br>
+            Rahat: Osio missä varastoidaan kaikki sinun rahasi
+        </p>
+        <button onclick="poistuHelpWindow()" class="poistuButton">Poistu</button>
+    </div>
+    
 
     <!-- Peliruutu -->
     <div id="html_layout" class="screen">
@@ -118,10 +139,13 @@
 
         <!-- Aineksien sekoitus laatikko -->
         <div class="box mix">
+            <div id="help_painike"> <!--Help button 29.5.2025-->
+                <button onclick="showHelpWindow()" class="question_mark" style="color: black">?</button>
+            </div>
             <h2>Sekoitusalue</h2>
             <div id="choosed_ingredients"></div> <!-- tähän myöhemmin tulee kuvia aineksista, kun niitä lisää kattilaan-->
             <img src="kuvat/pot.png" class="square">
-            <button onclick="startTheMiniGame()">Sekoita</button> <!--painike saa minipelin esille?-->
+            <button onclick="startTheMiniGame()"class= "mix_button1">Sekoita</button> <!--painike saa minipelin esille?-->
         </div>
 
         <!-- Reseptikirja laatikko -->

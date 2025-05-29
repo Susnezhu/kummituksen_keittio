@@ -173,4 +173,19 @@ if (canvas.getContext){
             }
         }
     }
+
+    //Help Window, show image you made, and place text on top of it via <p> element
+    function showHelpWindow(){
+        
+        html_layout.style.display = 'none';
+        canvas.style.display = "none";
+        minipeli_button.style.display = "none";
+        
+        help_window_big.style.display = "block";
+    }
+
+    function poistuHelpWindow() {
+        html_layout.style.display = "grid";
+        help_window_big.style.display = "none";
+    }
 }
