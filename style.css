@@ -1,16 +1,5 @@
-#canvas {
-    display: block;
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /*Uusi lisäys 22.5.2025*/
-    z-index: 100; /*Uusi lisäys 22.5.2025*/
-}
-
 body {
-    background-color: black;
+    background-color: rgb(36, 36, 36);
     margin: 0;
     padding: 0;
     color: rgb(255, 255, 255);
@@ -124,7 +113,6 @@ h2 {
 /* aineksen kuva ja määrä kpl*/
 .ingredient_pic {
     margin: 15px;
-    
 }
 .ingredient_pic p {
     margin: 5px;
@@ -162,42 +150,6 @@ right: 25px;
     width: 150px;
 }
 
-.html_layoyt { /*Uusi lisäys 22.5.2025*/
-    display: block; 
-}
-
-#minipeli_button { /*Uusi lisäys 22.5.2025*/
-    padding: 22px;
-    border-radius: 20px;
-    bottom: 13%;
-    width: 150px;
-    left: 45.5%;
-    align-items: center;
-    display: none;
-    position: absolute;
-}
-
-#sekoitus_teksti{
-    display: none;
-    bottom: 9%;
-    width: 300px;
-    left: 42%;
-    align-items: center;
-    display: none;
-    position: absolute;
-}
-
-#yritysmaara {
-    display: none;
-    bottom: 4.5%;
-    width: 300px;
-    left: 42%;
-    align-items: center;
-    display: none;
-    position: absolute;
-}
-
-
 /* näppäimien koko aineksien laatikossa */
 .ingredients button {
     width: 100px;
@@ -226,19 +178,45 @@ right: 25px;
     top: 150px;
 }
 
-/*Uudet lisäykset 29.5.2025*/
-/*Help painikkeen Div*/
-#help_painike {
-    z-index: 101;
-    position: relative;
-    bottom: 46px;
-    left: 299px;
+/* minipeli elementit */
+#canvasDiv {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-/*Help buttonin class*/
+#canvas {
+    pointer-events: none;
+}
+
+#minipeli_button {
+    padding: 15px 5px;
+    border-radius: 20px;
+    width: 150px;
+    font-size: 30px;
+}
+
+#sekoitus_teksti{
+    display: none;
+}
+
+#yritysmaara {
+    display: none;
+}
+
+
+/* ohjeiden avaus nöppäin */
 .question_mark {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     position: absolute;
+    right: 10px;
+    top: 10px;
     line-height: 1px;
     align-items: center;
     justify-content: center;
@@ -247,7 +225,7 @@ right: 25px;
     height: 50px;
     width: 50px;
     font-size: 35px;
-    border: 4px solid #6a4a13;
+    border: 3px solid #281d0a;
     background-color: #d49b3f;
 }
 
@@ -257,57 +235,37 @@ right: 25px;
     font-size: 35px;
 }
 
-.html_layoyt { /*Uusi lisäys 22.5.2025*/
-    display: block; 
-}
-
 /*Help ikkunan tyylit*/
-#help_window_big {
-    display: none;
+#helpWindow {
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 102;
-    height: 100%;
-    width: 100%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
+    background-color: #d49b3f;
+    padding: 30px;
+    border-radius: 20px;
+    width: 40%;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: left;
 }
 
 .help_teksti {
     color: white;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    left: 35%;
-    bottom: 80%;
-    font-size: 27px;
-    width: 34%;
+    font-size: 25px;
+    line-height: 1.6;
+    margin-bottom: 30px;
 }
 
-.help_kuva {
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    width: 55%;
-    height: 90%;
-    bottom: 55%;
-    left: 24%;
-    image-rendering: pixelated; /* For modern browsers */
-    image-rendering: crisp-edges; /* Fallback */
-}
-
-/*Poistuminen help ikkunasta*/
 .poistuButton {
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    width: 9%;
-    height: 7%;
-    bottom: 67%;
-    left: 47%;
-    font-size: 30px;
-    font-weight: bold;
-    border: 4px solid #000000;
-    background-color: #d49b3f;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 35px;
+    background-color: #aa7d34;
+    border: 3px solid #281d0a;
+    border-radius: 10px;
+}
+.poistuButton:hover {
+    background-color: #8b6525;
 }

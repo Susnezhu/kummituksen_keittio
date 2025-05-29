@@ -1,19 +1,20 @@
 
 const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+const stop = document.getElementById("minipeli_button");
+const minigameWindow = document.getElementById("canvasDiv");
+const html_layout = document.getElementById("html_layout");
+const helpWindow = document.getElementById("helpWindow")
+helpWindow.style.display = "none"
 
-if (canvas.getContext){
+if (canvas.getContext){ //tarkistaa toimiikoo canvas käyttäjän selaimessa
     
     window.onload = function() {
         html_layout.style.display = 'grid'; //Tärkeä, ei voi olla block.
-        canvas.style.display = 'none';
-        minipeli_button.style.display = "none";
     };
 
-    const ctx = canvas.getContext("2d");
-    const stop = document.getElementById("minipeli_button");
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = 600;
+    canvas.height = 400;
 
     //Global values nuolen liikuttamista varten, mutta tällähetkellä estää minipeliä näkymästä
     const centerSpotX = canvas.width / 2; //Jos vielä bugaa, vieä tämä takaisin mistä sen otit
@@ -55,8 +56,8 @@ if (canvas.getContext){
         needleY = meterY - 100;
         
         html_layout.style.display = 'none';
-        canvas.style.display = "block";
-        minipeli_button.style.display = "block";
+        minigameWindow.style.display = "block";
+
         
         animateMix(); //animation start
     }
@@ -120,8 +121,7 @@ if (canvas.getContext){
             setTimeout(function() {
                 
                 html_layout.style.display = 'grid';
-                canvas.style.display = 'none';
-                minipeli_button.style.display = "none";
+                minigameWindow.style.display = "none";
                 sekoitus_teksti.style.display = "none";
                 yritysmaara.style.display = "none";
             }, 3000);
@@ -161,7 +161,7 @@ if (canvas.getContext){
                 setTimeout(function() {
                     
                     html_layout.style.display = 'grid';
-                    canvas.style.display = 'none';
+                    minigameWindow.style.display = "none"
                     sekoitus_teksti.style.display = "none";
                     yritysMaara = document.getElementById("yritysmaara");
                     yritysMaara.textContent = `${tries2} yritystä jäljellä.`;
@@ -173,19 +173,22 @@ if (canvas.getContext){
             }
         }
     }
+} else {
+    console.log("canvas ei toimi nykyisessä selaimessa")
+}
 
-    //Help Window, show image you made, and place text on top of it via <p> element
-    function showHelpWindow(){
-        
-        html_layout.style.display = 'none';
-        canvas.style.display = "none";
-        minipeli_button.style.display = "none";
-        
-        help_window_big.style.display = "block";
-    }
+//Help Window, show image you made, and place text on top of it via <p> element
+function showHelpWindow() {
 
-    function poistuHelpWindow() {
-        html_layout.style.display = "grid";
-        help_window_big.style.display = "none";
-    }
+    const helpWindow = document.getElementById("helpWindow");
+    
+    html_layout.style.display = 'none';
+    minigameWindow.style.display = "none";
+    
+    helpWindow.style.display = "block";
+}
+
+function poistuHelpWindow() {
+    html_layout.style.display = "grid";
+    helpWindow.style.display = "none";
 }

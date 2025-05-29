@@ -2,12 +2,12 @@
 //ainekset: sen määrä, numero, hinta, nimi, kuva
 const ingredients = {
     1: [0,1,1, "Oranssi Hämäkäkin seitti"],
-    2: [0,2,1, "Kovakuoriaisen jalka"],
-    3: [0,3,1, "Paisunut mustesieni"],
-    4: [0,4,1, "Harmaa meduusa"],
-    5: [0,5,1, "Anacondan muna"],
-    6: [0,6,1, "Auringonkukka"],
-    7: [0,7,1, "Tuikkiva jauho"]};
+    2: [0,2,2, "Kovakuoriaisen jalka"],
+    3: [0,3,3, "Paisunut mustesieni"],
+    4: [0,4,4, "Harmaa meduusa"],
+    5: [0,5,5, "Anacondan muna"],
+    6: [0,6,2, "Auringonkukka"],
+    7: [0,7,3, "Tuikkiva jauho"]};
 
 //pelaajan rahat
 let money = 20;
@@ -17,11 +17,11 @@ let mixingBowl = [];
 
 //oikeat kombinaatiot resepteille
 const rightCombination = [
-    {name: "Settiverho", combo: [1,2], price: 5, locked: false, pic: "kuvat/r1.png"},
-    {name: "Hämähäkin auringonsäde", combo: [1, 6, 7], price: 6, locked: true, pic: "kuvat/r2.png"},
-    {name: "Meduusan sydän", combo: [3, 4, 7, 5], price: 10, locked: true, pic: "kuvat/r3.png"},
-    {name: "Elävä hyytelö", combo: [2, 4, 5, 7], price: 12, locked: true, pic: "kuvat/r4.png"},
-    {name: "Kuun palanen", combo: [2, 4 ,7],price: 7, locked: true, pic: "kuvat/r5.png"}
+    {name: "Settiverho", combo: [1,2], price: 8, locked: false, pic: "kuvat/r1.png"},
+    {name: "Hämähäkin auringonsäde", combo: [1, 6, 7], price: 7, locked: true, pic: "kuvat/r2.png"},
+    {name: "Meduusan sydän", combo: [3, 4, 7, 5], price: 12, locked: true, pic: "kuvat/r3.png"},
+    {name: "Elävä hyytelö", combo: [2, 4, 5, 7], price: 13, locked: true, pic: "kuvat/r4.png"},
+    {name: "Kuun palanen", combo: [2, 4 ,7],price: 10, locked: true, pic: "kuvat/r5.png"}
 ];
 
 //mikä resepti nyt auki

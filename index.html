@@ -10,32 +10,22 @@
 </head>
 <body>
     
-    <div class="canvasDiv">
+    <div id="canvasDiv">
         <canvas id="canvas"></canvas>
         <button id="minipeli_button">Pysäytä</button> <!--alt. paina spacebaria, buttonin sijaan esim p tagi missä selostus-->
-        <p>
-            <span id="sekoitus_teksti">Ohi meni!</span>
-            <span id="yritysmaara">3 yritystä jäljellä</span>
-        </p>
+        <p id="sekoitus_teksti">Ohi meni!</p>
+        <p id="yritysmaara">3 yritystä jäljellä</p>
     </div>
     
-    <div id="help_window_big">
-        <img src="kuvat/help_button2.png" class="help_kuva" title="help ohje ikkuna">
-        <p class="help_teksti">Ainekset: Täältä ainekset, mitä tarvitset sekoitukseen. Kaikki ainekset
-            eivät heti saatavilla, niitä tulee sen mukaan miten paljon rahaa olet ansainnut.
+    <div id="helpWindow">
+        <p class="help_teksti">
+            - Sekoita ainesosia kattilassa, löydä uusia reseptejä ja kirjaa ne reseptikirjaan.
             <br>
-            . Osta: "Osta"-napilla ostat ja saat aineksen käyttöösi.
+            - Seuraa rahojasi ja osta uusia ainesosia varastoon!
             <br>
-            . Lisää: "Lisää"-napilla lisäät aineksen sekoitusalueelle, eli kattilaan (max 10 kpl.)
+            - Kun sekoitat, peli käynnistää minipelin: pysäytä nuoli vihreälle alueelle painamalla välilyöntiä tai "Pysäytä"-nappia.
             <br>
-            Sekoitusalue: Kattila, mihin sinun tulee lisätä ainesosat.
-            <br>
-            . Minipeli: Ruudulle tulee minipeli kun painat "sekoita"-nappia.
-            Tässä sinun pitää pysäyttää mittarinuoli vihreälle, välilyönti- tai Pysäytä-nappila.
-            <br>
-            Reseptikirja: Tuotteita mitä voit luoda, niiden hinta ja ohjeet.
-            <br>
-            Rahat: Osio missä varastoidaan kaikki sinun rahasi
+            - Ole tarkkana sekoittaessa! Epäonnistuminen voi viedä kaikki käytetyt ainesosat!
         </p>
         <button onclick="poistuHelpWindow()" class="poistuButton">Poistu</button>
     </div>
@@ -56,7 +46,7 @@
                         </div>
                         
                         <div class="ingredient_buttons">
-                            <button class="buy" onclick="buyIngredient(1)">Osta</button>
+                            <button class="buy" onclick="buyIngredient(1)" title="hinta: 1€">Osta</button>
                             <button class="add" onclick="addIngredient(1)">Lisää</button>
                         </div>
                     </div>
@@ -68,7 +58,7 @@
                         </div>
 
                         <div class="ingredient_buttons">
-                            <button class="buy" onclick="buyIngredient(2)">Osta</button>
+                            <button class="buy" onclick="buyIngredient(2)" title="hinta: 2€">Osta</button>
                             <button class="add" onclick="addIngredient(2)">Lisää</button>
                         </div>
                     </div>
@@ -80,7 +70,7 @@
                         </div>
 
                         <div class="ingredient_buttons">
-                            <button class="buy" onclick="buyIngredient(3)">Osta</button>
+                            <button class="buy" onclick="buyIngredient(3)" title="hinta: 3€">Osta</button>
                             <button class="add" onclick="addIngredient(3)">Lisää</button>
                         </div>
                     </div>
@@ -92,7 +82,7 @@
                         </div>
 
                         <div class="ingredient_buttons">
-                            <button class="buy" onclick="buyIngredient(4)">Osta</button>
+                            <button class="buy" onclick="buyIngredient(4)" title="hinta: 4€">Osta</button>
                             <button class="add" onclick="addIngredient(4)">Lisää</button>
                         </div>
                     </div>
@@ -104,7 +94,7 @@
                         </div>
 
                         <div class="ingredient_buttons">
-                            <button class="buy" onclick="buyIngredient(5)">Osta</button>
+                            <button class="buy" onclick="buyIngredient(5)" title="hinta: 5€">Osta</button>
                             <button class="add" onclick="addIngredient(5)">Lisää</button>
                         </div>
                     </div>
@@ -116,7 +106,7 @@
                         </div>
 
                         <div class="ingredient_buttons">
-                            <button class="buy" onclick="buyIngredient(6)">Osta</button>
+                            <button class="buy" onclick="buyIngredient(6)" title="hinta: 2€">Osta</button>
                             <button class="add" onclick="addIngredient(6)">Lisää</button>
                         </div>
                     </div>
@@ -128,7 +118,7 @@
                         </div>
 
                         <div class="ingredient_buttons">
-                            <button class="buy" onclick="buyIngredient(7)">Osta</button>
+                            <button class="buy" onclick="buyIngredient(7)" title="hinta: 3€">Osta</button>
                             <button class="add" onclick="addIngredient(7)">Lisää</button>
                         </div>
                     </div>
@@ -139,13 +129,11 @@
 
         <!-- Aineksien sekoitus laatikko -->
         <div class="box mix">
-            <div id="help_painike"> <!--Help button 29.5.2025-->
-                <button onclick="showHelpWindow()" class="question_mark" style="color: black">?</button>
-            </div>
+            <button onclick="showHelpWindow()" class="question_mark" style="color: black">?</button>
             <h2>Sekoitusalue</h2>
             <div id="choosed_ingredients"></div> <!-- tähän myöhemmin tulee kuvia aineksista, kun niitä lisää kattilaan-->
             <img src="kuvat/pot.png" class="square">
-            <button onclick="startTheMiniGame()"class= "mix_button1">Sekoita</button> <!--painike saa minipelin esille?-->
+            <button onclick="startTheMiniGame()" class= "mix_button1">Sekoita</button> <!--painike saa minipelin esille?-->
         </div>
 
         <!-- Reseptikirja laatikko -->
@@ -178,7 +166,6 @@
     
 
     <script src="script.js"></script>
-
     <script src="script2.js"></script> <!--script2.js lisäys-->
 </body>
 </html>
