@@ -213,4 +213,19 @@ right: 25px;
     position: absolute;
     top: 55%;
     transform: translateY(-50%);
+    left: 40px;
+}
+
+/* näyttää paljonko rahaa vähennettiin */
+#show_minus {
+    margin: 0;
+    position: absolute;
+    top: 50px;
+    right: 5px;
+    color: rgb(172, 34, 34);
+}
+
+#choosed_ingredients {
+    position: absolute;
+    top: 150px;
 }

@@ -8,10 +8,9 @@ const ingredients = {
     5: [0,5,1, "Anacondan muna"],
     6: [0,6,1, "Auringonkukka"],
     7: [0,7,1, "Tuikkiva jauho"]};
-    //keskellä alunperin: 1, 2, 3, 1, 1, 1, 1
 
 //pelaajan rahat
-let money = 50;
+let money = 20;
 
 //sekoitus kulho
 let mixingBowl = [];
@@ -35,13 +34,21 @@ function buyIngredient(num) {
         //rahojen vähentäminen
         money -= ingredients[num][2];
         let moneyText = document.getElementById("money_text");
+        let showMinus = document.getElementById("show_minus");
         moneyText.textContent = money + "€";
+        showMinus.textContent = "-" + ingredients[num][2] + "€";
+        showMinus.style.display = "block";
+
 
         //aineksien lisääminen
         let quantityText = document.getElementById("ingredient_quantity_" + num);
         ingredients[num][0] += 1;
         let quantity = ingredients[num][0];
         quantityText.textContent = quantity + " kpl";
+
+        setTimeout(function() {
+            showMinus.style.display = "none";
+        }, 1000)
     }
 }
 
@@ -59,8 +66,48 @@ function addIngredient(num) {
 
         //lisää aineksia kulhoon
         mixingBowl.push(ingredients[num][1]);
+
+        showAddedIngredients();
     }
 }
+
+const choosedIngredients = document.getElementById("choosed_ingredients"); //tähän lisätään kuvia
+
+// Funktio näyttää kaikki valitut ainekset kuvina
+function showAddedIngredients() {
+    choosedIngredients.innerHTML = ""; //puhdistaa näytön
+
+    for (let ing of mixingBowl) {
+        const img = document.createElement("img"); //Luo uuden <img>-elementin
+        img.src = "/kuvat/" + ing + ".png";
+        img.alt = "ingredient";
+        img.style.width = "100px";
+        img.style.margin = "10px";
+        img.style.cursor = "pointer";
+
+        img.onclick = function() {
+            const index = mixingBowl.indexOf(ing);
+
+            if (index !== -1) {
+                for (let i in ingredients) {
+                    if (ingredients[i][1] === ing) {
+                        ingredients[i][0] += 1; // lisää 1 aineksen takaisin
+                        let quantityText = document.getElementById("ingredient_quantity_" + i);
+                        quantityText.textContent = ingredients[i][0] + " kpl";
+                        break;
+                    }
+                }
+
+                mixingBowl.splice(index, 1); //poistaa indeksillä kuvan taulukosta
+
+                showAddedIngredients();      //päivittää näkymän
+            }
+        };
+
+        choosedIngredients.appendChild(img);
+    }
+}
+
 
 
 //resepti kirjan näppäimillä selailu
@@ -89,19 +136,26 @@ function showRecipe() {
     let recipeCostText = document.getElementById("recipe_cost_text");
     let recipePic = document.getElementById("recipe_pic");
 
-    recipeNameText.textContent = rightCombination[recipeNow].name; //näyttää valitun reseptin nimen
-    recipeCostText.textContent = "hinta: " + rightCombination[recipeNow].price + "€"; //näyttää valitun hinnan
     recipePic.src = rightCombination[recipeNow].pic; //näytttää reseptin kuvan
 
     let ingredientLines = [] //tähän tulee aineksien nimet
 
-    for (let now of rightCombination[recipeNow].combo) {
+    //jos resepti on tiedossa:
+    if (!rightCombination[recipeNow].locked) {
+        recipeNameText.textContent = rightCombination[recipeNow].name; //näyttää valitun reseptin nimen
+        recipeCostText.textContent = "hinta: " + rightCombination[recipeNow].price + "€"; //näyttää valitun reseptin hinnan
 
-        recipeText.textContent = ingredients[now][3];
+        //Lisää aineksien nimet nimet taulukkoon
+        for (let now of rightCombination[recipeNow].combo) {
         ingredientLines.push("- " + ingredients[now][3]);
+        }
+    } else { //jos resepti ei ole tiedossa
+        recipeNameText.textContent = ""; //tyhjentää nimen
+        recipeCostText.textContent = ""; //tyhjentää reseptin
+        ingredientLines.push("Resepti ei vielä tiedossa");
     }
 
-    recipeText.innerText = ingredientLines.join("\n");
+    recipeText.innerText = ingredientLines.join("\n"); //näyttää reseptien ainekset
 }
 
 

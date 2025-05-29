@@ -47,6 +47,8 @@ if (canvas.getContext){
 
     //called via button press "mix pot", then calls the main animation function
     function startTheMiniGame(){
+        choosedIngredients.innerHTML = ""; //tämä puhdistaa näytön valituista kuvista
+
         gameActive = true;
         speed = 7;
         tries = 0;
