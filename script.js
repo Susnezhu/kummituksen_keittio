@@ -79,7 +79,7 @@ function showAddedIngredients() {
 
     for (let ing of mixingBowl) {
         const img = document.createElement("img"); //Luo uuden <img>-elementin
-        img.src = "/kuvat/" + ing + ".png";
+        img.src = "kuvat/" + ing + ".png";
         img.alt = "ingredient";
         img.style.width = "100px";
         img.style.margin = "10px";
