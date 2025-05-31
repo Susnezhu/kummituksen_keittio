@@ -5,8 +5,7 @@ body {
     color: rgb(255, 255, 255);
     overflow: hidden; /* Uusi lisäys 22.5.2025 */
     font-family: "Caveat", cursive;
-    -moz-user-select: none; /*highlight poispäältä*/
-    user-select:none; 
+    user-select:none; /*highlight poispäältä*/
 }
 
 /* kaikkien tekstien koko */
@@ -79,7 +78,7 @@ button:active {
 .square {
     width: 300px;
     height: 300px;
-    margin: 10p;
+    margin: 10px;
     margin-top: 250px;
 }
 
@@ -268,4 +267,21 @@ right: 25px;
 }
 .poistuButton:hover {
     background-color: #8b6525;
+}
+
+#recipeResultImg {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0) scale(0.5); /* aluksi kuva on pieni (pienennetty) */
+    z-index: 200;
+    max-width: 250px;
+    pointer-events: none;
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+#recipeResultImg.show {
+    transform: translate(-50%, 0) scale(1); /* kuva suurenee animoidusti */
+    opacity: 1; 
 }

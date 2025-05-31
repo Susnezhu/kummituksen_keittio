@@ -131,8 +131,11 @@
         <div class="box mix">
             <button onclick="showHelpWindow()" class="question_mark" style="color: black">?</button>
             <h2>Sekoitusalue</h2>
-            <div id="choosed_ingredients"></div> <!-- tähän myöhemmin tulee kuvia aineksista, kun niitä lisää kattilaan-->
-            <img src="kuvat/pot.png" class="square">
+            <div id="choosed_ingredients"></div> <!-- tähän tulee kuvia aineksista, kun niitä lisää kattilaan-->
+
+            <img id="recipeResultImg" src="kuvat/placeholder.png" alt="valmis annos"> <!-- kuva reseptistä, joka tuli -->
+
+            <img src="kuvat/pot.png" class="square" alt="kattila">
             <button onclick="startTheMiniGame()" class= "mix_button1">Sekoita</button> <!--painike saa minipelin esille?-->
         </div>
 
@@ -140,7 +143,7 @@
         <div class="box recipe">
             <h2>Reseptikirja</h2>
             <p id="recipe_name_text">Reseptin nimi</p>
-            <img id="recipe_pic">
+            <img id="recipe_pic" src="kuvat/placeholder.png" alt="reseptin kuva">
             <p id="recipe_text">[aines1, aines2, aines3]</p>
             <p id="recipe_cost_text">hinta: 10€</p>
             <div>

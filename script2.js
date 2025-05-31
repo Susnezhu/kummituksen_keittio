@@ -142,7 +142,7 @@ if (canvas.getContext){ //tarkistaa toimiikoo canvas käyttäjän selaimessa
                 html_layout.style.display = 'grid';
                 displayNone(minigameWindow)
                 visabilityHidden(needleStopBtn, false)
-            }, 2000);
+            }, 1000);
             
             tries2 = 3;
             tries_text.textContent = `${tries2} yritystä jäljellä.`;
@@ -181,7 +181,7 @@ if (canvas.getContext){ //tarkistaa toimiikoo canvas käyttäjän selaimessa
                     visabilityHidden(mixing_text, false);
                     visabilityHidden(tries_text, false);
                     visabilityHidden(needleStopBtn, false)
-            }, 3000);
+            }, 1000);
                 
             }
         }

@@ -19,7 +19,7 @@ let mixingBowl = [];
 const rightCombination = [
     {name: "Settiverho", combo: [1,2], price: 8, locked: false, pic: "kuvat/r1.png"},
     {name: "Hämähäkin auringonsäde", combo: [1, 6, 7], price: 7, locked: true, pic: "kuvat/r2.png"},
-    {name: "Meduusan sydän", combo: [3, 4, 7, 5], price: 12, locked: true, pic: "kuvat/r3.png"},
+    {name: "Meduusan sydän", combo: [3, 4, 5, 7], price: 12, locked: true, pic: "kuvat/r3.png"},
     {name: "Elävä hyytelö", combo: [2, 4, 5, 7], price: 13, locked: true, pic: "kuvat/r4.png"},
     {name: "Kuun palanen", combo: [2, 4 ,7],price: 10, locked: true, pic: "kuvat/r5.png"}
 ];
@@ -161,58 +161,78 @@ function showRecipe() {
 showRecipe()
 
 
-//Function, reviewing if recipe can be done
-//Antin lisäämä, 26.5.25
+//tehdyn reseptin kuva animaatio
+function showRecipeResultImage(imgSrc) {
+    const resultImg = document.getElementById("recipeResultImg");
+
+    resultImg.src = imgSrc;
+    resultImg.style.display = "block";
+
+    setTimeout(function() {
+        resultImg.classList.add("show");
+    }, 10);
+
+    new Audio("sounds/recipewin.mp3").play();
+
+    setTimeout(function() {
+        resultImg.classList.remove("show");
+        setTimeout(function() {
+            resultImg.style.display = "none";
+        }, 500);
+    }, 2500);
+}
+
+
 function reviewRecipe() {
-    
-    let earnedMoney = 0;
-    let bowlCopy = [...mixingBowl];
-    let checkRecipes = true;
-    
-    while (checkRecipes){
-        checkRecipes = false;
-        
-        for (let recipe of rightCombination){
-            
-            if (recipe.locked) continue
-            
-            let recipePossible = true;
-            let tempBowl = [...bowlCopy];
-            
-            for (let id of recipe.combo){
-                let index = tempBowl.indexOf(id);
-                if (index !== -1) {
-                    tempBowl.splice(index, 1);
-                } else {
-                    recipePossible = false;
-                    break;
-                }
-            }
-            if (recipePossible) {
-                for (let id of recipe.combo) {
-                    let removeIndex = bowlCopy.indexOf(id);
-                    if (removeIndex !== -1) bowlCopy.splice(removeIndex, 1);
-                }
-                
-                earnedMoney += recipe.price;
-                console.log(`Made ${recipe.name} for $${recipe.price}`);
-                checkRecipes = true; // New ingredients may now match another recipe
-                break; // Restart loop since we modified bowl
-                }
-                
-                if (earnedMoney > 0){
-                    mixingBowl = [...bowlCopy];
-                    money += earnedMoney;
-                    console.log(money + " total money after playing the minigame and having met conditions to the recipes")
-            
-                    let moneyText = document.getElementById("money_text");
-                    moneyText.textContent = money + "€";
-                }
-                earnedMoney = 0;
-                mixingBowl = []; //Nollataan jos vaikka auttaisi?
-                bowlCopy = [];
+    //järjestää ja kopion kattilan sisällön
+    const bowlCopy = mixingBowl.slice();
+    const sortedBowl = bowlCopy.slice().sort(function(a, b) {
+        return a - b;
+    });
+    let matchedRecipe = null;
+
+    for (let i = 0; i < rightCombination.length; i++) { //tarkistaa vuorotellen jokaisen reseptin combon
+        const recipe = rightCombination[i];
+        const sortedCombo = recipe.combo.slice().sort(function(a, b) {
+            return a - b;
+        });
+
+        if (sortedCombo.length !== sortedBowl.length) { //jos reseptillä ei pituus, kuin combolla
+            continue;
+        }
+
+        let match = true;
+        for (let j = 0; j < sortedCombo.length; j++) { //tarkistaa indeksillä onko samat
+            if (sortedCombo[j] !== sortedBowl[j]) {
+                match = false;
+                break;
             }
         }
+
+        if (match) {
+            matchedRecipe = recipe;
+            break;
+        }
     }
+
+    if (matchedRecipe) { //jos resepti on oikea
+
+        //lisää tiedot reseptistä resepti reseptikirjaan
+        if (matchedRecipe.locked) {
+            matchedRecipe.locked = false;
+            showRecipe()
+        }
+
+        money += matchedRecipe.price;
+        document.getElementById("money_text").textContent = money + "€"; //lisää rahat
+
+        setTimeout(function() {
+            showRecipeResultImage(matchedRecipe.pic); //kuvan animaatio
+            new Audio("sounds/recipewin.mp3").play();
+        }, 1100);
+    }
+
+    mixingBowl = [];
+}
 
 
