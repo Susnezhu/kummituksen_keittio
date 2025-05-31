@@ -202,14 +202,14 @@ right: 25px;
     font-size: 30px;
 }
 
-#sekoitus_teksti{
-    display: none;
+#sekoitus_teksti {
+    font-size: 35px;
+    margin: 0px;
 }
-
 #yritysmaara {
-    display: none;
+    font-size: 35px;
+    margin: 0px;
 }
-
 
 /* ohjeiden avaus nöppäin */
 .question_mark {

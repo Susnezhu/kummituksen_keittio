@@ -157,6 +157,8 @@ function showRecipe() {
 
     recipeText.innerText = ingredientLines.join("\n"); //näyttää reseptien ainekset
 }
+//Avaa aloitus reseptin, kun sivu avautuu
+showRecipe()
 
 
 //Function, reviewing if recipe can be done
@@ -213,5 +215,4 @@ function reviewRecipe() {
         }
     }
 
-//Avaa aloitus reseptin, kun sivu avautuu
-showRecipe()
+

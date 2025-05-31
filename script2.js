@@ -1,24 +1,48 @@
-
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-const stop = document.getElementById("minipeli_button");
+
+const needleStopBtn = document.getElementById("minipeli_button");
 const minigameWindow = document.getElementById("canvasDiv");
 const html_layout = document.getElementById("html_layout");
-const helpWindow = document.getElementById("helpWindow")
-helpWindow.style.display = "none"
+const tries_text = document.getElementById("yritysmaara");
+const mixing_text = document.getElementById("sekoitus_teksti");
+
+const helpWindow = document.getElementById("helpWindow");
+
+//ottaa domilla elementin pois näytöltä
+function displayNone(object, value=true) {
+    if (value) {
+        object.style.display = "none";
+    } else {
+        object.style.display = "block"; //jos false laittaa esille
+    }
+}
+//piilottaa domilla elementin näkyvyyden
+function visabilityHidden(object, value=true) {
+    if (value) {
+        object.style.visibility = "hidden";
+    } else {
+        object.style.visibility = "visible"; //jos false laittaa esille
+    }
+}
+
+displayNone(helpWindow);
+displayNone(minigameWindow);
+visabilityHidden(tries_text);
+visabilityHidden(mixing_text)
 
 if (canvas.getContext){ //tarkistaa toimiikoo canvas käyttäjän selaimessa
     
     window.onload = function() {
-        html_layout.style.display = 'grid'; //Tärkeä, ei voi olla block.
+        html_layout.style.display = 'grid'; //Tärkeä, ei voi olla block
     };
 
     canvas.width = 600;
-    canvas.height = 400;
+    canvas.height = 550;
 
     //Global values nuolen liikuttamista varten, mutta tällähetkellä estää minipeliä näkymästä
     const centerSpotX = canvas.width / 2; //Jos vielä bugaa, vieä tämä takaisin mistä sen otit
-    let meterY = canvas.height / 2;
+    let meterY = canvas.height / 2 + 100;
     let meterHeight = 530;
     let needleY = meterY - 100; //^Näitä 3 arvoa voi muuttaa myöhemmin tarpeen tullen
 
@@ -44,8 +68,9 @@ if (canvas.getContext){ //tarkistaa toimiikoo canvas käyttäjän selaimessa
         }
     });
 
-    stop.addEventListener("click", stopNeedle);
+    needleStopBtn.addEventListener("click", stopNeedle); //pysäytys nappula painaessa kutsuu funtion stopNeedle
 
+    
     //called via button press "mix pot", then calls the main animation function
     function startTheMiniGame(){
         choosedIngredients.innerHTML = ""; //tämä puhdistaa näytön valituista kuvista
@@ -55,8 +80,11 @@ if (canvas.getContext){ //tarkistaa toimiikoo canvas käyttäjän selaimessa
         tries = 0;
         needleY = meterY - 100;
         
-        html_layout.style.display = 'none';
-        minigameWindow.style.display = "block";
+        displayNone(html_layout);
+        displayNone(minigameWindow, false);
+        visabilityHidden(needleStopBtn, false)
+        visabilityHidden(tries_text);
+        visabilityHidden(mixing_text)
 
         
         animateMix(); //animation start
@@ -67,11 +95,6 @@ if (canvas.getContext){ //tarkistaa toimiikoo canvas käyttäjän selaimessa
         if (!gameActive) return;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        //draw white area
-        ctx.beginPath();
-        ctx.fillStyle = "rgb(255, 255, 255)";
-        ctx.fillRect(centerSpotX - 140, meterY - 390, 290, 600);
         
         //draw meter/red
         ctx.fillStyle = "rgb(225, 72, 51)";
@@ -106,68 +129,58 @@ if (canvas.getContext){ //tarkistaa toimiikoo canvas käyttäjän selaimessa
         
         if (needleY >= greenZone.y && needleY <= greenZone.y + greenZone.height) {
 
-            document.getElementById("yritysmaara").textContent = "";
-            minipeli_button.style.display = "none";
+            mixing_text.style.color = "rgb(110, 255, 141)";
+            mixing_text.textContent = "Onnittelut, osuit vihreään!";
 
-            sekoitus_teksti.style.display = "block";
-            yritysmaara.style.display = "none";
-            
-            let greenMessage = document.getElementById("sekoitus_teksti");
-            greenMessage.style.color = "rgb(110, 255, 141)";
-            greenMessage.style.fontSize = "35px";
-            greenMessage.textContent = "Onnittelut, osuit vihreään!";
+            visabilityHidden(needleStopBtn);
+            visabilityHidden(mixing_text, false);
+            visabilityHidden(tries_text);
 
             gameActive = false;
             setTimeout(function() {
                 
                 html_layout.style.display = 'grid';
-                minigameWindow.style.display = "none";
-                sekoitus_teksti.style.display = "none";
-                yritysmaara.style.display = "none";
-            }, 3000);
+                displayNone(minigameWindow)
+                visabilityHidden(needleStopBtn, false)
+            }, 2000);
             
             tries2 = 3;
-            document.getElementById("yritysmaara").textContent = `${tries2} yritystä jäljellä.`;
+            tries_text.textContent = `${tries2} yritystä jäljellä.`;
             reviewRecipe(); //kutsutaan funktio mikä on toisessa JS tiedostossa
         } 
         else {
             speed -= 2;
             new Audio("sounds/lose.mp3").play();
             
-            let yritykset = document.getElementById("sekoitus_teksti");
-            yritykset.style.fontSize = "30px";
-            yritykset.style.color = "rgb(222, 80, 80)";
-            yritykset.textContent = "Ohi meni!"
-            document.getElementById("yritysmaara").style.color = "rgb(222, 80, 80)";
-            document.getElementById("yritysmaara").style.fontSize = "30px";
-            document.getElementById("yritysmaara").textContent = `${tries2 - 1} yritystä jäljellä.`;
+            mixing_text.style.color = "rgb(222, 80, 80)";
+            mixing_text.textContent = "Ohi meni!";
+            tries_text.textContent = `${tries2 - 1} yritystä jäljellä.`;
 
-            sekoitus_teksti.style.display = "block";
-            yritysmaara.style.display = "block";
+            visabilityHidden(mixing_text, false);
+            visabilityHidden(tries_text, false);
             tries2 -= 1;
 
             if (tries >= maxTries){
 
-                minipeli_button.style.display = "none";
+                visabilityHidden(minipeli_button)
                 new Audio("sounds/gameover.mp3").play();
 
-                let yritykset = document.getElementById("sekoitus_teksti");
-                document.getElementById("yritysmaara").textContent = "";
-                yritykset.style.color =  "rgb(222, 80, 80)";
-                yritykset.style.fontSize = "30px";
-                yritykset.textContent = "Yritykset loppuivat, miksaus epäonnistui!"
+                tries_text.style.color =  "rgb(222, 80, 80)";
+                tries_text.textContent = "Yritykset loppuivat, miksaus epäonnistui!";
+                visabilityHidden(tries_text, false)
                 
                 gameActive = false;
                 setTimeout(function() {
+                    tries2 = 3;
                     
                     html_layout.style.display = 'grid';
-                    minigameWindow.style.display = "none"
-                    sekoitus_teksti.style.display = "none";
-                    yritysMaara = document.getElementById("yritysmaara");
-                    yritysMaara.textContent = `${tries2} yritystä jäljellä.`;
-                    yritysmaara.style.display = "none";
 
-                    tries2 = 3;
+                    tries_text.textContent = `${tries2} yritystä jäljellä.`;
+
+                    displayNone(minigameWindow)
+                    visabilityHidden(mixing_text, false);
+                    visabilityHidden(tries_text, false);
+                    visabilityHidden(needleStopBtn, false)
             }, 3000);
                 
             }
@@ -179,16 +192,14 @@ if (canvas.getContext){ //tarkistaa toimiikoo canvas käyttäjän selaimessa
 
 //Help Window, show image you made, and place text on top of it via <p> element
 function showHelpWindow() {
-
-    const helpWindow = document.getElementById("helpWindow");
     
-    html_layout.style.display = 'none';
-    minigameWindow.style.display = "none";
+    displayNone(html_layout)
+    displayNone(minigameWindow)
     
-    helpWindow.style.display = "block";
+    displayNone(helpWindow, false)
 }
 
 function poistuHelpWindow() {
     html_layout.style.display = "grid";
-    helpWindow.style.display = "none";
+    displayNone(helpWindow)
 }
